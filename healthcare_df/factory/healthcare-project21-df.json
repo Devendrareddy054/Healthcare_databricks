@@ -1,0 +1,9 @@
+{
+	"name": "healthcare-project21-df",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "7244decf-3679-43e4-8e39-8e0d4746e7ca",
+		"tenantId": "4c5e49b9-98fd-4fb7-b4e7-ecfe2760436b"
+	}
+}
