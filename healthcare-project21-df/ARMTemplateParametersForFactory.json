@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "healthcare-project21-df"
+		},
+		"DataLakeStorage_ls_accountKey": {
+			"value": ""
+		},
+		"DatabricksDeltaLake_ls_accessToken": {
+			"value": ""
+		},
+		"hospital_sql_ls_password": {
+			"value": ""
+		},
+		"DataLakeStorage_ls_properties_typeProperties_url": {
+			"value": "https://healthcareadlsgen.dfs.core.windows.net/"
+		},
+		"hospital_sql_ls_properties_typeProperties_server": {
+			"value": "healthcareserver.database.windows.net"
+		},
+		"hospital_sql_ls_properties_typeProperties_database": {
+			"value": "@{linkedService().db_name}"
+		},
+		"hospital_sql_ls_properties_typeProperties_userName": {
+			"value": "Dreamy"
+		}
+	}
+}
