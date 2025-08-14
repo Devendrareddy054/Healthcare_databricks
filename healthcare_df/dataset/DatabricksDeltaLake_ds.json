@@ -1,0 +1,23 @@
+{
+	"name": "DatabricksDeltaLake_ds",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DatabricksDeltaLake_ls",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"schema_name": {
+				"type": "string"
+			},
+			"table_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureDatabricksDeltaLakeDataset",
+		"typeProperties": {
+			"database": ""
+		},
+		"schema": []
+	}
+}
