@@ -68,6 +68,7 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
+							"userProperties": [],
 							"typeProperties": {
 								"dataset": {
 									"referenceName": "generic_adls_parquet",
@@ -86,6 +87,7 @@
 								],
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -106,6 +108,10 @@
 							],
 							"userProperties": [],
 							"typeProperties": {
+								"expression": {
+									"value": "@activity('File_Exists').output",
+									"type": "Expression"
+								},
 								"ifTrueActivities": [
 									{
 										"name": "achieve_file",
@@ -194,6 +200,10 @@
 							],
 							"userProperties": [],
 							"typeProperties": {
+								"expression": {
+									"value": "@equals(item().loadtype,'Full' )",
+									"type": "Expression"
+								},
 								"ifFalseActivities": [
 									{
 										"name": "fetch_logs",
