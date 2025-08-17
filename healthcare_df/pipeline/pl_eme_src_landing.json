@@ -52,7 +52,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Lkp_EMR_configs').output",
+						"value": "@activity('Lkp_EMR_configs').output.value",
 						"type": "Expression"
 					},
 					"isSequential": false,
@@ -109,7 +109,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@activity('File_Exists').output",
+									"value": "@activity('File_Exists').output.exists",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
@@ -425,7 +425,7 @@
 												"parameters": {
 													"container": "bronze",
 													"file_name": "@split(item().tablename,'.')[1]",
-													"file_path": "item().targetpath"
+													"file_path": "@item().targetpath"
 												}
 											}
 										]
