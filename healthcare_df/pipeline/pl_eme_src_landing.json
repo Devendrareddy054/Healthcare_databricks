@@ -51,6 +51,11 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@activity('Lkp_EMR_configs').output",
+						"type": "Expression"
+					},
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "File_Exists",
@@ -63,7 +68,6 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": [],
 							"typeProperties": {
 								"dataset": {
 									"referenceName": "generic_adls_parquet",
@@ -77,7 +81,9 @@
 										}
 									}
 								},
-								"fieldList": [],
+								"fieldList": [
+									"exists"
+								],
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
 									"enablePartitionDiscovery": false
@@ -364,9 +370,13 @@
 												"partitionOption": "None"
 											},
 											"sink": {
-												"type": "AzureSqlSink",
-												"writeBehavior": "insert",
-												"sqlWriterUseTableLock": false
+												"type": "ParquetSink",
+												"storeSettings": {
+													"type": "AzureBlobFSWriteSettings"
+												},
+												"formatSettings": {
+													"type": "ParquetWriteSettings"
+												}
 											},
 											"enableStaging": false,
 											"translator": {
@@ -400,8 +410,13 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "generic_sql_ds",
-												"type": "DatasetReference"
+												"referenceName": "generic_adls_parquet",
+												"type": "DatasetReference",
+												"parameters": {
+													"container": "bronze",
+													"file_name": "@split(item().tablename,'.')[1]",
+													"file_path": "item().targetpath"
+												}
 											}
 										]
 									},
