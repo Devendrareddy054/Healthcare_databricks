@@ -1,0 +1,44 @@
+{
+	"name": "pl_eme_src_landing",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lkp_EMR_configs",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "generic_adls_flat_file_ds",
+						"type": "DatasetReference",
+						"parameters": {
+							"container": "configs",
+							"file_name": "load_config.csv",
+							"file_path": "emr"
+						}
+					},
+					"firstRowOnly": false
+				}
+			}
+		],
+		"annotations": []
+	}
+}
